@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tipos_productos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('id_tipo')->autoIncrement();
+            $table->string('nombre_tipo',20 );
+            
         });
     }
 

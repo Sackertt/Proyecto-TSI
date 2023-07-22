@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ajustes_productos', function (Blueprint $table) {
-            $table->integer('id_tipo')->autoIncrement();
-            $table->string('nombre_tipo',20 );
+            $table->integer('id_ajuste')->autoIncrement();
+            $table->boolean('tipo_ajuste');
+            $table->integer('cant_ajuste',100);
+            $table->string('motivo_ajuste',100);
         });
     }
 
