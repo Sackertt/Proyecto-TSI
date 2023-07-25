@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos_productos', function (Blueprint $table) {
-            $table->integer('id_tipo')->autoIncrement();
-            $table->string('nombre_tipo',20 );
-            
+        Schema::create('ventas', function (Blueprint $table) {
+            $table->integer('id_venta')->autoIncrement();
+            $table->string('rut_cliente',10);
+
+            $table->foreign('rut_cliente')->references('rut_cliente')->on('clientes');
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_productos');
+        Schema::dropIfExists('ventas');
     }
 };

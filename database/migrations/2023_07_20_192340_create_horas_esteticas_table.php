@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('horas_esteticas', function (Blueprint $table) {
-            $table->integer('id_hora')->autoIncrement();
-            $table->string('rut_cliente',10);
-            $table->tinyInteger('tipo_servicio');
-            $table->string('nombre_mascota',10);
-            $table->tinyInteger('tamaño_mascota');
+            $table->increments('id_hora');
+            $table->string('rut_cliente', 10);
+            $table->integer('tipo_servicio');
+            $table->string('nombre_mascota', 10);
+            $table->string('tamaño_mascota', 10);
             $table->date('fecha_servicio');
-            $table->timestamps();
+        
+            $table->foreign('rut_cliente')->references('rut_cliente')->on('clientes');
+            $table->foreign('tipo_servicio')->references('id_atencion')->on('tipos_atenciones');
         });
     }
 

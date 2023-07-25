@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->integer('id_producto')->autoIncrement();
             $table->string('nombre_producto',20);
-            $table->integer('cantidad_producto',100);
+            $table->integer('cantidad_producto');
             $table->string('descrip_producto',100);
+            $table->integer('tipo_producto');
 
             // Foraneas
-            $table->integer('tipo_producto');
-            $table->foreign('tipo_producto')->references('id_tipo')->on('tipos_productos');      ;
+            
+            $table->foreign('tipo_producto')->references('id_tipo')->on('tipos_productos');
         });
     }
 

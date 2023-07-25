@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ajustes_productos', function (Blueprint $table) {
-            $table->increments('id_ajuste');
+        Schema::create('detalles_ventas', function (Blueprint $table) {
+            $table->integer('id_venta');
+            $table->date('fecha_venta');
             $table->integer('id_producto');
-        
-            $table->boolean('tipo_ajuste'); // Cambiamos el tipo de dato a boolean
-            $table->integer('cant_ajuste'); // Eliminamos la propiedad auto_increment de aquí
-            $table->string('motivo_ajuste', 100);
-        
+            $table->primary(['id_venta','fecha_venta','id_producto']);
+
+            $table->integer('cantidad_producto');
+            $table->integer('subtotal');
+
+            $table->foreign('id_venta')->references('id_venta')->on('ventas');
             $table->foreign('id_producto')->references('id_producto')->on('productos');
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ajustes_productos');
+        Schema::dropIfExists('detalles_ventas');
     }
 };
