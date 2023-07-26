@@ -15,6 +15,7 @@ return new class extends Migration
             $table->integer('id_producto')->autoIncrement();
             $table->string('nombre_producto',20);
             $table->integer('cantidad_producto');
+            $table->integer('precio_producto');
             $table->string('descrip_producto',100);
             $table->integer('tipo_producto');
 

@@ -9,4 +9,5 @@ class AjusteProducto extends Model
 {
     use HasFactory;
     protected $table = 'ajustes_productos';
+    
 }
