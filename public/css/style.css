@@ -1,0 +1,44 @@
+body {
+    font-size: 16px; /* Establecer un tamaño de fuente base (opcional) */
+  }
+  
+  h1 {
+    font-size: 2rem; /* El tamaño de fuente será 2 veces el tamaño de fuente del elemento raíz (32px) */
+    margin-bottom: 1.5rem; /* El margen inferior será 1.5 veces el tamaño de fuente del elemento raíz (24px) */
+  }
+  
+  p {
+    font-size: 1.2rem; /* El tamaño de fuente será 1.2 veces el tamaño de fuente del elemento raíz (19.2px) */
+    line-height: 1.6; /* El espacio entre líneas será 1.6 veces el tamaño de fuente del elemento raíz (25.6px) */
+  }
+
+/* Tamaño personalizado */
+.logo-tamaño {
+    width: 9.375rem; /* 150px / 16px (tamaño de fuente base) = 9.375rem */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* Tamaño para el producto */
+.producto-tamaño{
+    width: 21.875rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
+    height: 21.875rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
+    object-fit: cover;
+}
+
+/* Tamaño para el carrusel */
+.tamaño-carusel{
+    object-fit: fill;
+}
+
+/* Tamaño para la imagen del banner */
+.imagen-banner{
+    width: 75rem; /* 1800px / 16px (tamaño de fuente base) = 112.5rem */
+    height: 30rem; /* 250px / 16px (tamaño de fuente base) = 15.625rem */
+    object-fit:cover;
+    object-position: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
