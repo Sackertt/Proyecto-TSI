@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('precio_producto');
             $table->string('descrip_producto',100);
             $table->integer('tipo_producto');
+            $table->string('imagen_producto',100);
 
             // Foraneas
             

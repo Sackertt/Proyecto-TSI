@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ventas', function (Blueprint $table) {
-            $table->integer('id_venta')->autoIncrement();
-            $table->string('rut_cliente',10);
-
+        Schema::create('mascotas', function (Blueprint $table) {
+            $table->integer('id_mascota')->autoIncrement();
+            $table->string('nombre_mascota',20);
+            $table->string('tamaño_mascota',10);
+            
+            $table->string('rut_cliente');
             $table->foreign('rut_cliente')->references('rut_cliente')->on('clientes');
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ventas');
+        Schema::dropIfExists('mascotas');
     }
 };

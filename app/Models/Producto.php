@@ -12,9 +12,7 @@ class Producto extends Model
     use HasFactory;
     protected $table = 'productos';
 
-    public function ventaConPivot():BelongsToMany{
-        return $this->belongsToMany(Venta::class)->withPivot(['fecha_venta','id_producto','cantidad_producto','subtotal']);
-    }
+    
     public function tipoProducto():HasOne{
         return $this->hasOne(TipoProducto::class);
     }

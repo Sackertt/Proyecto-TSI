@@ -15,7 +15,7 @@ class Cliente extends Model
         return $this->hasMany(HoraEstetica::class);
     }
 
-    public function ventas():HasMany{
-        return $this->hasMany(Venta::class);
+    public function mascotas():HasMany{
+        return $this->hasMany(Mascota::class);
     }
 }
