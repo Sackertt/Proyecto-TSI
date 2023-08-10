@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col text-center">
             
-            <img class="logo-tamaño" src="{{asset('images/Logo-MP.png')}}" alt="">
+            <img class="logo-tamaño-cabeza" src="{{asset('images/Logo-MP.png')}}" alt="">
         </div>
       </div>
       <!-- NAVBAR -->
@@ -30,24 +30,12 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Alimento</a>
-                  </li>
+                    <a class="nav-link active text-white" aria-current="page" href="#">Catalogo</a>
+                  </li>        
+                  <li><a class="text-White nav-link active" href="">|</a></li>
                   <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Accesorios</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Ropa</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Camas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Juguetes</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Agenda tu hora</a>
-                  </li>
-                  
+                    <a class="nav-link active text-white" aria-current="page" href="#">Agenda aqui</a>
+                  </li>     
                 </ul>
               </div>
             </div>

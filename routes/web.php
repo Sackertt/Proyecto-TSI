@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
-
+use App\Http\Controllers\DetalleProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +17,7 @@ use App\Http\Controllers\ProductoController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
-Route::get('/productos',[ProductoController::class,'index'])->name('productos.index');
+Route::get('/Catalogo',[ProductoController::class,'index'])->name('productos.index');
+Route::get('/Producto',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
+
 

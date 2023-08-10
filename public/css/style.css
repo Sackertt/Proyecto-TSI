@@ -20,8 +20,8 @@ body {
 
 /* Tamaño para el producto */
 .producto-tamaño{
-    width: 21.875rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
-    height: 21.875rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
+    width: 26rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
+    height: 26rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
     object-fit: cover;
 }
 
@@ -41,4 +41,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center; 
+  }
+
+  .logo-tamaño-cabeza{
+    width: 6rem; /* 150px / 16px (tamaño de fuente base) = 9.375rem */
+    height: 6rem; /* Altura automática para mantener la proporción */
+  }
+  .imagen-detalle{
+    width: 30rem;
+    height: 30rem;
   }
