@@ -19,4 +19,9 @@ class ProductoController extends Controller
         }
         return view('productos.index', compact(['productos','tipos']));
     }
+    public function edit() 
+    {
+        $tipos = DB::table('tipos_productos')->get();
+        return view('productos.edit',compact('tipos'));   
+    }
 }

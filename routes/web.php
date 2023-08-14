@@ -17,7 +17,9 @@ use App\Http\Controllers\DetalleProductoController;
 */
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
-Route::get('/Catalogo',[ProductoController::class,'index'])->name('productos.index');
-Route::get('/Producto',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
+Route::get('/producto',[ProductoController::class,'index'])->name('productos.index');
+Route::get('/producto/edit',[ProductoController::class,'edit'])->name('productos.edit');
+
+Route::get('/producto/{producto}',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
 
 

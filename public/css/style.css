@@ -22,7 +22,7 @@ body {
 .producto-tamaño{
     width: 26rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
     height: 26rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
-    object-fit: cover;
+    object-fit:cover;
 }
 
 /* Tamaño para el carrusel */
