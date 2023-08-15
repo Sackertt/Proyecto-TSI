@@ -8,6 +8,16 @@
                         <h3 class="text-center">Editar Producto</h3>
                     </div>
                 <div class="card-body">
+                     @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <p>Por favor solucione los siguientes problemas:</p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{route('productos.update',$producto->id_producto)}}">
                         @method('PUT')
                         @csrf
@@ -22,7 +32,7 @@
                                 <input type="text" class="form-control" id="precio" name="precio"  value="{{$producto->precio_producto}}">
                                 </div>
                                 <div class="mb-3">
-                                <label for="descripcion" class="form-label"></label>
+                                <label for="descripcion" class="form-label">Descripcion</label>
                                 <textarea class="form-control" id="descripcion" name="descripcion" rows="5">{{$producto->descrip_producto}}</textarea>
                                 </div>
                             </div>

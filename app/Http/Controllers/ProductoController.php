@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditarProductosRequest;
 use App\Http\Requests\ProductosRequest;
 use App\Models\Producto;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class ProductoController extends Controller
         $tipos = DB::table('tipos_productos')->get();
         return view('productos.edit',compact(['tipos','producto']));   
     }
-    public function update(Request $request,$producto)
+    public function update(EditarProductosRequest $request,$producto)
     {
         DB::table('productos')->where('id_producto', $producto)
         ->update(['nombre_producto' => $request->nombre,
