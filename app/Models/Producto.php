@@ -11,7 +11,7 @@ class Producto extends Model
 {
     use HasFactory;
     protected $table = 'productos';
-
+    public $timestamps = false;
     
     public function tipoProducto():HasOne{
         return $this->hasOne(TipoProducto::class);

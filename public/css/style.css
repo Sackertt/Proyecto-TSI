@@ -20,8 +20,8 @@ body {
 
 /* Tamaño para el producto */
 .producto-tamaño{
-    width: 26rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
-    height: 26rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
+    width: 30rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
+    height: 30rem; /* 350px / 16px (tamaño de fuente base) = 21.875rem */
     object-fit:cover;
 }
 

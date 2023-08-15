@@ -8,35 +8,32 @@
                         <h3 class="text-center">Editar Producto</h3>
                     </div>
                 <div class="card-body">
-                    <form action="">
+                    <form method="POST" action="{{route('productos.update',$producto->id_producto)}}">
+                        @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Inserte Nombre Producto">
+                                <input type="text" class="form-control" id="nombre" name="nombre" value="{{$producto->nombre_producto}}">
                                 </div>
                                 <div class="mb-3">
                                 <label for="precio" class="form-label">Precio</label>
-                                <input type="text" class="form-control" id="precio" placeholder="Inserte Precio Producto">
+                                <input type="text" class="form-control" id="precio" name="precio"  value="{{$producto->precio_producto}}">
                                 </div>
                                 <div class="mb-3">
-                                <label for="descripcion" class="form-label">Descripcion</label>
-                                <textarea class="form-control" id="descripcion" rows="5"></textarea>
+                                <label for="descripcion" class="form-label"></label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="5">{{$producto->descrip_producto}}</textarea>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="mb-3">
-                                <label for="imagen" class="form-label">Seleccione Imagen de producto</label>
-                                <input class="form-control" type="file" id="imagen">
-                                </div>
                                 <label>Tipo de Producto</label>
                                 @foreach($tipos as $tipo)
                                 <div class="form-check">
-                                <input class="form-check-input" type="radio" name="tipo" id="flexRadioDefault1" value="{{$tipo->id_tipo}}">
+                                <input class="form-check-input" type="radio" name="tipo" id="flexRadioDefault1" value="{{$tipo->id_tipo}}" @if($producto->tipo_producto == $tipo->id_tipo) checked @endif>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     {{$tipo->nombre_tipo}}
-                                </label>
+                                </label>  
                                 </div>
                                 @endforeach
                                 

@@ -4,7 +4,7 @@
     <div class="card m-4" >
         <div class="row g-0">
             <div class="col-md-5">
-                <img src="{{asset('public/images/LOGO-MP.png')}}" class="img-fluid flex-fill rounded-start imagen-detalle">
+                <img src="{{asset('storage/imagenes mp/'.$producto->imagen_producto)}}" class="img-fluid flex-fill rounded-start imagen-detalle">
             </div>
             <div class="col-md-7">
                 <div class="card-body">

@@ -15,7 +15,7 @@
             </form>
         </div>
         <!-- Fin Filtro -->
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="card my-4 mx-3">
                 <img src="{{asset('images/Logo-MP.png')}}" class="card-img-top producto-tamaño img-fluid flex-fill" alt="...">
                 <div class="card-body">
@@ -27,7 +27,7 @@
         </div>
         <!-- Productos -->
         @foreach($productos as $producto)
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="card my-4 mx-3">
                 <img src="{{asset('storage/Imagenes mp/'.$producto->imagen_producto)}}" class="card-img-top producto-tamaño img-fluid flex-fill" alt="...">
                 <div class="card-body">

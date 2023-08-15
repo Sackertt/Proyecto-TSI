@@ -18,7 +18,14 @@ use App\Http\Controllers\DetalleProductoController;
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 Route::get('/producto',[ProductoController::class,'index'])->name('productos.index');
-Route::get('/producto/edit',[ProductoController::class,'edit'])->name('productos.edit');
+Route::get('/producto/edit/{producto_id}',[ProductoController::class,'edit'])->name('productos.edit');
+Route::put('/producto/edit/{producto_id}',[ProductoController::class,'update'])->name('productos.update');
+
+
+Route::get('/producto/create',[ProductoController::class,'create'])->name('productos.create');
+Route::post('/producto/create',[ProductoController::class,'store'])->name('productos.store');
+
+
 
 Route::get('/producto/{producto}',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
 

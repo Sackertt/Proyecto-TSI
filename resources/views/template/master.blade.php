@@ -16,8 +16,7 @@
     <div class="container-fluid" style="background: linear-gradient(to bottom, #8354a2 50%, #b7a3c9 100%);">
       <div class="row">
         <div class="col text-center">
-            
-            <img class="logo-tamaño-cabeza" src="{{asset('images/Logo-MP.png')}}" alt="">
+            <a href="{{route('home.index')}}"><img class="logo-tamaño-cabeza" src="{{asset('images/Logo-MP.png')}}" alt=""></a>    
         </div>
       </div>
       <!-- NAVBAR -->
