@@ -25,7 +25,7 @@ class EditarProductosRequest extends FormRequest
             'nombre'=> 'required|max:20',
             'precio'=> 'required|numeric',
             'descripcion' => 'required|max:100',
-            'tipo' => 'required|exists:productos,id_producto'
+            'tipo' => 'required|exists:tipos_productos,id_tipo'
         ];
     }
     public function messages():array

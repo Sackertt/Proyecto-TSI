@@ -27,7 +27,7 @@ class ProductosRequest extends FormRequest
             'precio'=> 'required|numeric',
             'descripcion' => 'required|max:100',
             'imagen' => 'required|image',
-            'tipo' => 'required|exists:productos,id_producto'
+            'tipo' => 'required|exists:tipos_productos,id_tipo'
             
         ];
     }

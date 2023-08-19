@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DescargarImagenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\DetalleProductoController;
+use App\Http\Controllers\GestionProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,18 +17,26 @@ use App\Http\Controllers\DetalleProductoController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//Inicio de la pagina
 Route::get('/',[HomeController::class,'index'])->name('home.index');
+//Ver catalogo
 Route::get('/producto',[ProductoController::class,'index'])->name('productos.index');
-Route::get('/producto/edit/{producto_id}',[ProductoController::class,'edit'])->name('productos.edit');
-Route::put('/producto/edit/{producto_id}',[ProductoController::class,'update'])->name('productos.update');
 
 
-Route::get('/producto/create',[ProductoController::class,'create'])->name('productos.create');
-Route::post('/producto/create',[ProductoController::class,'store'])->name('productos.store');
+//Gestion Productos
+Route::get('/gestion',[GestionProductoController::class,'index'])->name('gestion_productos.index');
+Route::get('/producto/edit/{producto_id}',[GestionProductoController::class,'edit'])->name('gestion_productos.edit');
+Route::put('/producto/edit/{producto_id}',[GestionProductoController::class,'update'])->name('gestion_productos.update');
+Route::get('/producto/create',[GestionProductoController::class,'create'])->name('gestion_productos.create');
+Route::post('/producto/create',[GestionProductoController::class,'store'])->name('gestion_productos.store');
+Route::get('/producto/create',[GestionProductoController::class,'create'])->name('gestion_productos.create');
+Route::get('/producto/delete/{producto}',[GestionProductoController::class,'destroy'])->name('gestion_productos.destroy');
+
+//Descargar Imagen
+Route::get('/producto/download/{producto}',[DescargarImagenController::class,'download'])->name('gestion_productos.download');
 
 
-
+//Detalles Productos
 Route::get('/producto/{producto}',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
 
 
