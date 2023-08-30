@@ -12,7 +12,7 @@ class HoraEstetica extends Model
     protected $table = 'horas_esteticas';
 
     public function clientes():BelongsTo{
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Usuario::class);
     }
     public function tipos_atencion():BelongsTo{
         return $this->belongsTo(TipoAtencion::class);

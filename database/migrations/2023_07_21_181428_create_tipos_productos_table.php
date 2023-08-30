@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('tipos_productos', function (Blueprint $table) {
             $table->integer('id_tipo')->autoIncrement();
             $table->string('nombre_tipo',20 );
-            
         });
     }
 

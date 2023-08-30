@@ -12,6 +12,6 @@ class Mascota extends Model
     protected $table = 'mascotas';
 
     public function cliente():BelongsTo{
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Usuario::class);
     }
 }

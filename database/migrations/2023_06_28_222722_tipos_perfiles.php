@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clientes', function (Blueprint $table) {
-            $table->string('rut_cliente',10)->primary();
-            $table->string('nombre_cliente',20);
-            $table->string('fono_cliente',9);
-            $table->string('direccion_cliente',30);
+        Schema::create('tipos_perfiles', function (Blueprint $table) {
+            $table->integer('id_perfil')->autoIncrement();
+            $table->string('nombre_perfil');
         });
+        
     }
 
     /**
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clientes');
+        //
     }
 };

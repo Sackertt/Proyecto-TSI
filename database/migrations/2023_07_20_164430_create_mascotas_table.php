@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nombre_mascota',20);
             $table->string('tamaño_mascota',10);
             
-            $table->string('rut_cliente');
-            $table->foreign('rut_cliente')->references('rut_cliente')->on('clientes');
+            $table->string('rut');
+            $table->foreign('rut')->references('rut')->on('usuarios');
         });
     }
 

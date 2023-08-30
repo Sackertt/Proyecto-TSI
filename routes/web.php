@@ -6,6 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\DetalleProductoController;
 use App\Http\Controllers\GestionProductoController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SesionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,13 @@ use App\Http\Controllers\GestionProductoController;
 */
 //Inicio de la pagina
 Route::get('/',[HomeController::class,'index'])->name('home.index');
+//Sesion
+Route::get('/login',[LoginController::class,'index'])->name('login.index');
+Route::post('/login',[LoginController::class,'login'])->name('login.login');
+
+Route::get('/register',[RegisterController::class,'index'])->name('register.index');
+Route::post('/register',[RegisterController::class,'store'])->name('register.store');
+
 //Ver catalogo
 Route::get('/producto',[ProductoController::class,'index'])->name('productos.index');
 

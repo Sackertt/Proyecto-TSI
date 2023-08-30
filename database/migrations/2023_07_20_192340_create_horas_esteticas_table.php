@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('horas_esteticas', function (Blueprint $table) {
             $table->increments('id_hora');
-            $table->string('rut_cliente', 10);
+            $table->string('rut', 10);
             $table->integer('tipo_servicio');
             $table->date('fecha_servicio');
             $table->integer('id_mascota');
 
             $table->foreign('id_mascota')->references('id_mascota')->on('mascotas');
-            $table->foreign('rut_cliente')->references('rut_cliente')->on('clientes');
+            $table->foreign('rut')->references('rut')->on('usuarios');
             $table->foreign('tipo_servicio')->references('id_atencion')->on('tipos_atenciones');
         });
     }

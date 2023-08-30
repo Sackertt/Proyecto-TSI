@@ -4,12 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Cliente extends Model
+class Usuario extends Authenticable
 {
     use HasFactory;
-    protected $table = 'clientes';
+    protected $table = 'usuarios';
+    protected $primaryKey = 'rut';
+    protected $keyType = 'string';    
+    public $timestamps = false;
     
     public function tomasDeHoras():HasMany{
         return $this->hasMany(HoraEstetica::class);
