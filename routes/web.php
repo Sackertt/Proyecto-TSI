@@ -7,8 +7,11 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\DetalleProductoController;
 use App\Http\Controllers\GestionProductoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SesionController;
+use Illuminate\Auth\Events\Logout;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,8 @@ Route::post('/login',[LoginController::class,'login'])->name('login.login');
 
 Route::get('/register',[RegisterController::class,'index'])->name('register.index');
 Route::post('/register',[RegisterController::class,'store'])->name('register.store');
+
+Route::get('/logout', [LogoutController::class,'logout'])->name('logout.logout');
 
 //Ver catalogo
 Route::get('/producto',[ProductoController::class,'index'])->name('productos.index');
@@ -49,4 +54,7 @@ Route::get('/producto/download/{producto}',[DescargarImagenController::class,'do
 //Detalles Productos
 Route::get('/producto/{producto}',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
 
+//Mascotas
+Route::get('/mascotas',[MascotaController::class,'index'])->name('mascotas.index');
+Route::get('/mascotas/create',[MascotaController::class,'create'])->name('mascotas.create');
 

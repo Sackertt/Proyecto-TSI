@@ -34,8 +34,28 @@
                   <li><a class="text-White nav-link active" href="">|</a></li>
                   <li class="nav-item">
                     <a class="nav-link active text-white" aria-current="page" href="#">Agenda aqui</a>
-                  </li>     
+                  </li>
+                  <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Nombre Usuario</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <!-- Usuario -->
+                    <li><a class="dropdown-item" href="#">Opciones</a></li>
+
+                    <!-- Admin -->
+                    <li><a class="dropdown-item" href="#">Productos</a></li>
+                    <li><a class="dropdown-item" href="#">Horas Peluqueria</a></li>
+                  </ul>
+                </li>
                 </ul>
+                @if (Auth::check()) 
+                <a href="{{route('logout.logout')}}" class="btn btn-danger text-white"><i class="fa-solid fa-right-to-bracket me-2" style="color: #ffffff;"></i>Log out</a>
+                @else 
+                <a href="{{route('login.index')}}" class="btn btn-primary"><i class="fa-regular fa-user me-2" style="color: #ffffff; "></i>Acceso</a>
+                 @endif 
               </div>
             </div>
           </nav>

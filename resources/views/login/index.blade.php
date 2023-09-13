@@ -1,7 +1,10 @@
 @extends('template.master')
 @section('contenidoPrincipal')
 <div class="container-fluid">
-    <div class="card">
+    <div class="row">
+        <div class="col-0 col-md-3"></div>
+        <div class="col-12 col-md-6">
+        <div class="card">
         <div class="card-header text-center bg-primary text-white">
             <h3>Iniciar Sesion</h3>
         </div>
@@ -29,6 +32,13 @@
                 </div>
             @endif
         </div>
+        <div class="card-footer text-end">
+            <h6>Si no tienes cuenta crea una aqui</h6>
+            <a href="{{route('register.index')}}" class="btn btn-primary ">Registrar</a>
+        </div>
     </div>
+        </div>
+    </div>
+   
 </div>
 @endsection
