@@ -10,6 +10,7 @@ class Mascota extends Model
 {
     use HasFactory;
     protected $table = 'mascotas';
+    public $timestamps = false;
 
     public function cliente():BelongsTo{
         return $this->belongsTo(Usuario::class);

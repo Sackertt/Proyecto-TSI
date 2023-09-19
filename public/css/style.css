@@ -55,3 +55,6 @@ body {
     width: auto;
     min-height: 18rem;
   }
+  .tamaño-contenido-principal{
+    min-height: 28rem;
+  }

@@ -31,26 +31,34 @@
                   <li class="nav-item">
                     <a class="nav-link active text-white" aria-current="page" href="{{route('productos.index')}}">Catalogo</a>
                   </li>        
-                  <li><a class="text-White nav-link active" href="">|</a></li>
+                  <li><a class="text-primary nav-link active" href="">|</a></li>
                   <li class="nav-item">
                     <a class="nav-link active text-white" aria-current="page" href="#">Agenda aqui</a>
                   </li>
+                  @if (Auth::check())
+                  <li><a class="text-primary nav-link active" href="">|</a></li>
+
                   <li class="nav-item dropdown ">
                   <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
+                    Usuario
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Nombre Usuario</a></li>
+                    <li><a class="dropdown-item" href="{{route('usuario.index')}}">Bienvenido {{Auth::user()->nombre}}</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <!-- Usuario -->
-                    <li><a class="dropdown-item" href="#">Opciones</a></li>
-
+                    @if(Auth::user()->id_perfil == 1)
                     <!-- Admin -->
-                    <li><a class="dropdown-item" href="#">Productos</a></li>
+                    <li><a class="dropdown-item" href="{{route('gestion_productos.index')}}">Gestion Productos</a></li>
                     <li><a class="dropdown-item" href="#">Horas Peluqueria</a></li>
+                    @endif
+                    
+                    @if(Auth::user()->id_perfil == 2)
+                    <!-- Usuario -->
+                    @endif
+                    
                   </ul>
                 </li>
-                </ul>
+                  @endif
+              </ul>
                 @if (Auth::check()) 
                 <a href="{{route('logout.logout')}}" class="btn btn-danger text-white"><i class="fa-solid fa-right-to-bracket me-2" style="color: #ffffff;"></i>Log out</a>
                 @else 
@@ -61,7 +69,10 @@
           </nav>
     </div>
     <!-- CONTENIDO PRINCIPAL -->
-    @yield('contenidoPrincipal')
+    <div class="tamaño-contenido-principal">
+      @yield('contenidoPrincipal')
+    </div>
+    
     <!-- FIN CONT PRINC -->
     <div class="container-fluid text-center text-white" style="background: linear-gradient(to top, #8354a2 50%, #b7a3c9 100%);">
       <div class="row p-4">

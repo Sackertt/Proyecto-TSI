@@ -6,11 +6,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\DetalleProductoController;
 use App\Http\Controllers\GestionProductoController;
+use App\Http\Controllers\HorasEsteticasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MascotaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SesionController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Auth\Events\Logout;
 
 /*
@@ -26,6 +28,8 @@ use Illuminate\Auth\Events\Logout;
 //Inicio de la pagina
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 //Sesion
+Route::get('/usuario',[UsuarioController::class,'index'])->name('usuario.index');
+
 Route::get('/login',[LoginController::class,'index'])->name('login.index');
 Route::post('/login',[LoginController::class,'login'])->name('login.login');
 
@@ -50,11 +54,17 @@ Route::get('/producto/delete/{producto}',[GestionProductoController::class,'dest
 //Descargar Imagen
 Route::get('/producto/download/{producto}',[DescargarImagenController::class,'download'])->name('gestion_productos.download');
 
-
 //Detalles Productos
 Route::get('/producto/{producto}',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
 
 //Mascotas
-Route::get('/mascotas',[MascotaController::class,'index'])->name('mascotas.index');
+
 Route::get('/mascotas/create',[MascotaController::class,'create'])->name('mascotas.create');
+Route::post('/mascotas/create',[MascotaController::class,'store'])->name('mascotas.store');
+
+Route::get('/mascotas/edit/{mascota}',[MascotaController::class,'edit'])->name('mascotas.edit');
+Route::put('/mascotas/edit/{mascota}',[MascotaController::class,'update'])->name('mascotas.update');
+
+//Horas Esteticas
+Route::get("/horas_esteticas",[HorasEsteticasController::class, 'index'])->name('horas_esteticas.index');
 
