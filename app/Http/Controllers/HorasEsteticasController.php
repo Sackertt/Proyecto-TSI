@@ -12,6 +12,7 @@ class HorasEsteticasController extends Controller
     {
         $mascotas = DB::table('mascotas')->where('rut' , Auth::user()->rut)->get();
         $servicios = DB::table('tipos_atenciones')->get();
+        
         return view('horas_esteticas.index',compact(['mascotas', 'servicios']));
     }
     public function create()
