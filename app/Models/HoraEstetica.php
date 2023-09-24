@@ -10,6 +10,7 @@ class HoraEstetica extends Model
 {
     use HasFactory;
     protected $table = 'horas_esteticas';
+    public $timestamps = false;
 
     public function clientes():BelongsTo{
         return $this->belongsTo(Usuario::class);

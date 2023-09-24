@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HorasEsteticasRequest;
+use App\Models\HoraEstetica;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -10,17 +12,31 @@ class HorasEsteticasController extends Controller
 {
     public function index()
     {
-        $mascotas = DB::table('mascotas')->where('rut' , Auth::user()->rut)->get();
-        $servicios = DB::table('tipos_atenciones')->get();
-        
-        return view('horas_esteticas.index',compact(['mascotas', 'servicios']));
+        //
     }
     public function create()
     {
-        //
+        $mascotas = DB::table('mascotas')->where('rut' , Auth::user()->rut)->get();
+        $servicios = DB::table('tipos_atenciones')->get();
+        
+        return view('horas_esteticas.create',compact(['mascotas', 'servicios']));
     }
-    public function store()
+    public function store(HorasEsteticasRequest $request)
     {
-        //
+
+        // Validaciones
+
+        //Crear hora
+        $hora = new HoraEstetica();
+        $hora->rut = Auth::user()->rut; 
+        $hora->tipo_servicio = $request->servicio;
+        $hora->fecha_servicio = $request->fecha;
+        $hora->id_mascota = $request->mascota;
+
+        $hora ->save();
+
+        return redirect()->route('home.index');
+
+
     }
 }

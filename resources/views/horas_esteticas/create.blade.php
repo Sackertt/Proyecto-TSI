@@ -9,13 +9,13 @@
             </div>
             <div class="card-body  ">
                     
-                <form method="POST" action="#">
+                <form method="POST" action="{{route('horas_esteticas.store')}}">
                     @csrf
                    <div class="row">
                     <div class="col-6">
                         <label for="mascota">Mascota</label>
                         <select class="form-select" aria-label="Default select example" name="mascota" id="mascota">
-                        <option selected>Seleccione Mascota</option>
+                        <option value="">Seleccione Mascota</option>
                         @foreach($mascotas as $mascota)
                         <option value="{{$mascota->id_mascota}}">{{$mascota->nombre_mascota}}</option>
                         @endforeach
@@ -25,9 +25,9 @@
                     <div class="col-6">
                     <label for="servicio">Tipo Servicio</label>
                     <select class="form-select" aria-label="Default select example" name="servicio" id="servicio">
-                        <option selected>Seleccione Tipo de Servicio</option>
+                        <option value="">Seleccione Tipo de Servicio</option>
                         @foreach($servicios as $servicio)
-                        <option value="{{$servicio->id_tipo}}">{{$servicio->nombre_tipo}}</option>
+                        <option value="{{$servicio->id_atencion}}">{{$servicio->nombre_atencion}}</option>
                         @endforeach
                     </select>
                     </div>
@@ -41,16 +41,19 @@
                    </div>
                    
                 </form>
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <p>Por favor solucione los siguientes problemas:</p>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    <div class="mt-3">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <p>Por favor solucione los siguientes problemas:</p>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+                    
                 </div>
         </div>
     </div>

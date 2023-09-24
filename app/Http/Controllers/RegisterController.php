@@ -19,7 +19,7 @@ class RegisterController extends Controller
         $usuario->nombre = $request->nombre;
         $usuario->fono = $request->fono;
         $usuario->direccion = $request->direccion;
-        $usuario->id_perfil = 1;
+        $usuario->id_perfil = 2;
         $usuario->save();
         return redirect()->route('home.index');
     }
