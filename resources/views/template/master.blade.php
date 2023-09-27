@@ -31,24 +31,24 @@
                   <li class="nav-item">
                     <a class="nav-link active text-white" aria-current="page" href="{{route('productos.index')}}">Catalogo</a>
                   </li>        
-                  <li><a class="text-primary nav-link active" href="">|</a></li>
+                  <li><a class="text-primary nav-link active" href="#">|</a></li>
                   <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="#">Agenda aqui</a>
+                    <a class="nav-link active text-white" aria-current="page" href="{{route('horas_esteticas.create')}}">Agenda aqui</a>
                   </li>
                   @if (Auth::check())
-                  <li><a class="text-primary nav-link active" href="">|</a></li>
+                  <li><a class="text-primary nav-link active" href="#">|</a></li>
 
                   <li class="nav-item dropdown ">
                   <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Usuario
+                    Bienvenido {{Auth::user()->nombre}}
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{route('usuario.index')}}">Bienvenido {{Auth::user()->nombre}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('usuario.index')}}">Mi Cuenta</a></li>
                     <li><hr class="dropdown-divider"></li>
                     @if(Auth::user()->id_perfil == 1)
                     <!-- Admin -->
                     <li><a class="dropdown-item" href="{{route('gestion_productos.index')}}">Gestion Productos</a></li>
-                    <li><a class="dropdown-item" href="#">Horas Peluqueria</a></li>
+                    <li><a class="dropdown-item" href="{{route('horas_esteticas.index')}}">Horas Peluqueria</a></li>
                     @endif
                     
                     @if(Auth::user()->id_perfil == 2)
@@ -85,7 +85,7 @@
               <h1 class="text-center text-white">Redes Sociales</h1>
               <a href="https://www.instagram.com/marchepets/" class="m-3"><i class="fa-brands fa-instagram fa-2xl text-white" style="color: #000000;"></i></a>
               <a href="https://wa.me/56986282531" class="m-3"><i class="fa-brands fa-whatsapp fa-2xl text-white"></i></a>
-              <a href="" class="m-3"><i class="fa-brands fa-facebook fa-2xl text-white"></i></a>
+              <a href="#" class="m-3"><i class="fa-brands fa-facebook fa-2xl text-white"></i></a>
             </div>
           </div>          
         </div>

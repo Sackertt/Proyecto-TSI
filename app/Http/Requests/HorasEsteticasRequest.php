@@ -24,7 +24,7 @@ class HorasEsteticasRequest extends FormRequest
         return [
             'mascota' => 'required|exists:mascotas,id_mascota',
             'servicio' => 'required|exists:tipos_atenciones,id_atencion',
-            'fecha' => 'required',
+            'fecha' => 'required|after:yesterday',
         ];
     }
     public function messages():array
@@ -36,6 +36,7 @@ class HorasEsteticasRequest extends FormRequest
             'servicio.required'=>"El campo Tipo Servicio es obligatorio",
             'servicio.exists'=>"Este tipo de atención no se encuentra registrado en la base de datos.",
             'fecha.required'=>"Seleccione la fecha del servicio",
+            'fecha.after' =>"Seleccione una fecha valida"
         ];
     }
 }

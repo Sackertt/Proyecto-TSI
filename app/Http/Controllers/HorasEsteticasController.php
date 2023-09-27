@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HorasEsteticasRequest;
 use App\Models\HoraEstetica;
+use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,18 @@ class HorasEsteticasController extends Controller
 {
     public function index()
     {
-        //
+        $mascotas = DB::table('mascotas')->where('rut', Auth::user()->rut)->get();
+        $servicios = DB::table('tipos_atenciones')->get();
+        if(Auth::user()->id_perfil == 1)
+        {
+            $horas = DB::table('horas_esteticas')->orderBy('fecha_servicio','asc')->get();
+        }
+        elseif(Auth::user()->id_perfil == 2)
+        {
+            $horas = DB::table('horas_esteticas')->where('rut',Auth::user()->rut)->orderBy('fecha_servicio','asc')->get();
+        };
+
+        return view('horas_esteticas.index', compact(['horas','mascotas','servicios']));
     }
     public function create()
     {
@@ -23,20 +35,24 @@ class HorasEsteticasController extends Controller
     }
     public function store(HorasEsteticasRequest $request)
     {
-
         // Validaciones
+        $mascotas = DB::table('mascotas')->where('rut',Auth::user()->rut)->get();
+        $mascotar = $request->mascota;
+        foreach($mascotas as $mascota){
+            if($mascota->id_mascota == $mascotar){
 
-        //Crear hora
-        $hora = new HoraEstetica();
-        $hora->rut = Auth::user()->rut; 
-        $hora->tipo_servicio = $request->servicio;
-        $hora->fecha_servicio = $request->fecha;
-        $hora->id_mascota = $request->mascota;
+                //Crear hora
+                $hora = new HoraEstetica();
+                $hora->rut = Auth::user()->rut; 
+                $hora->tipo_servicio = $request->servicio;
+                $hora->fecha_servicio = $request->fecha;
+                $hora->id_mascota = $mascotar;
+                
+                $hora ->save();
 
-        $hora ->save();
-
-        return redirect()->route('home.index');
-
-
+                return redirect()->route('horas_esteticas.index');
+            }
+        }
+        return redirect()->route('horas_esteticas.index');
     }
 }
