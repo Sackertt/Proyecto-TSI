@@ -13,18 +13,21 @@ class HorasEsteticasController extends Controller
 {
     public function index()
     {
-        $mascotas = DB::table('mascotas')->where('rut', Auth::user()->rut)->get();
+        
         $servicios = DB::table('tipos_atenciones')->get();
+        $usuarios = DB::table('usuarios')->get();
         if(Auth::user()->id_perfil == 1)
         {
             $horas = DB::table('horas_esteticas')->orderBy('fecha_servicio','asc')->get();
+            $mascotas = DB::table('mascotas')->get();
         }
         elseif(Auth::user()->id_perfil == 2)
         {
             $horas = DB::table('horas_esteticas')->where('rut',Auth::user()->rut)->orderBy('fecha_servicio','asc')->get();
+            $mascotas = DB::table('mascotas')->where('rut', Auth::user()->rut)->get();
         };
 
-        return view('horas_esteticas.index', compact(['horas','mascotas','servicios']));
+        return view('horas_esteticas.index', compact(['horas','mascotas','servicios','usuarios']));
     }
     public function create()
     {

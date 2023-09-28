@@ -59,6 +59,16 @@ class GestionProductoController extends Controller
         // IMAGEN
         $file = $request->file('imagen');
         $name = $file->getClientOriginalName();
+        //Validar la imagen por si ya esta en la base de datos
+        $ps = DB::table('productos')->get();
+        foreach($ps as $p)
+        {
+            if ($p->imagen_producto == $name)
+            {   
+                $name = $name.'(1)';
+            }
+        }
+        //Fin
         $file->storeAs('',$name,'public');
         $producto->imagen_producto = $name;
         //GUARDAR

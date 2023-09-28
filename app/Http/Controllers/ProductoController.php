@@ -19,7 +19,9 @@ class ProductoController extends Controller
         if($tipos ->contains('id_tipo',$tipo)){
             $productos = DB::table('productos')->where('tipo_producto',$tipo)->get();
         }else{
-            $productos = DB::table('productos')->get();
+            if($request->busqueda != ''){
+                $productos = DB::table('productos')->where('nombre_producto','LIKE','%'.$request->busqueda.'%')->get();
+            }
         }
         return view('productos.index', compact(['productos','tipos']));
     }

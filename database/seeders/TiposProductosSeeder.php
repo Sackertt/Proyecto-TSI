@@ -17,6 +17,9 @@ class TiposProductosSeeder extends Seeder
             ['nombre_tipo'=>"Ropa",],
             ['nombre_tipo'=>"Camas",],
             ['nombre_tipo'=>"Juguetes",],
-            ['nombre_tipo'=>"Snacks",],]);
+            ['nombre_tipo'=>"Snacks",],
+            ['nombre_tipo'=>"Accesorios",],
+
+        ]);
     }
 }

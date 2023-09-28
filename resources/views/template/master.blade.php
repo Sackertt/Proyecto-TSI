@@ -53,6 +53,7 @@
                     
                     @if(Auth::user()->id_perfil == 2)
                     <!-- Usuario -->
+                    <li><a class="dropdown-item" href="{{route('horas_esteticas.index')}}">Mis Horas Peluqueria</a></li>
                     @endif
                     
                   </ul>
@@ -60,9 +61,9 @@
                   @endif
               </ul>
                 @if (Auth::check()) 
-                <a href="{{route('logout.logout')}}" class="btn btn-danger text-white"><i class="fa-solid fa-right-to-bracket me-2" style="color: #ffffff;"></i>Log out</a>
+                  <a href="{{route('logout.logout')}}" class="btn btn-danger text-white"><i class="fa-solid fa-right-to-bracket me-2" style="color: #ffffff;"></i>Log out</a>
                 @else 
-                <a href="{{route('login.index')}}" class="btn btn-primary"><i class="fa-regular fa-user me-2" style="color: #ffffff; "></i>Acceso</a>
+                  <a href="{{route('login.index')}}" class="btn btn-primary"><i class="fa-regular fa-user me-2" style="color: #ffffff; "></i>Acceso</a>
                  @endif 
               </div>
             </div>

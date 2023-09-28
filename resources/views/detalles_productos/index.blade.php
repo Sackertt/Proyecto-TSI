@@ -1,7 +1,9 @@
 @extends('template.master')
 @section('contenidoPrincipal')
 <div class="container-fluid">
-    <div class="card m-4" >
+    <div class="row justify-content-center align-items-center">
+        <div class="col-10">
+        <div class="card m-4" >
         <div class="row g-0">
             <div class="col-md-5">
                 <img src="{{asset('storage/imagenes mp/'.$producto->imagen_producto)}}" class="img-fluid flex-fill rounded-start imagen-detalle">
@@ -15,6 +17,9 @@
             </div>
         </div>
     </div>
+        </div>
+    </div>
+    
     <div class="row">
         <div class="col text-end me-4 ">
             <a href="{{route('productos.index')}}" class="btn btn-primary px-4">Volver</a>

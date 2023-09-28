@@ -34,7 +34,7 @@
                     <h3>Mascotas</h3>
                 </div>
                 <div class="card-body text-center">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
                         <th scope="col">#</th>

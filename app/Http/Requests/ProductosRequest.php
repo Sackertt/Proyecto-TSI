@@ -23,7 +23,7 @@ class ProductosRequest extends FormRequest
     {
         return [
             // campo => restricciones
-            'nombre'=> 'required|max:20',
+            'nombre'=> 'required|max:20|unique:productos,nombre_producto',
             'precio'=> 'required|numeric',
             'descripcion' => 'required|max:100',
             'imagen' => 'required|image',
@@ -38,6 +38,7 @@ class ProductosRequest extends FormRequest
         return [
             'nombre.required'=>'Indique el nombre del producto',
             'nombre.max'=>'Nombre de producto demasiado extenso',
+            'nombre.unique'=>'Producto existente con este nombre',
             
             'precio.required'=>'Indique precio de producto',
             'precio.numeric'=>'Solo numeros en el campo precio.',
@@ -50,8 +51,6 @@ class ProductosRequest extends FormRequest
             
             'tipo.required' => 'Seleccione un tipo de producto.',
             'tipo.exists'    => "Tipo no valido."
-            
-
         ];
     }
 }
