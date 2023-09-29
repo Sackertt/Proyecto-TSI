@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tipos_perfiles', function (Blueprint $table) {
             $table->integer('id_perfil')->autoIncrement();
-            $table->string('nombre_perfil');
+            $table->string('nombre_perfil',20);
         });
         
     }

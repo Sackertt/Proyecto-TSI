@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('rut', 10);
             $table->integer('tipo_servicio');
             $table->date('fecha_servicio');
+            $table->string('hora_servicio');
             $table->integer('id_mascota');
-
+            
             $table->foreign('id_mascota')->references('id_mascota')->on('mascotas');
             $table->foreign('rut')->references('rut')->on('usuarios');
             $table->foreign('tipo_servicio')->references('id_atencion')->on('tipos_atenciones');

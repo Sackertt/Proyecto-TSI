@@ -14,10 +14,11 @@
                         <th scope="col">#</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Mascota</th>
+                           
                         <!-- Vista Administrador -->
                         @if(Auth::user()->id_perfil == 1)
-                            <th scope="col">Nombre Dueño</th>
-                            <th scope="col">Telefono de Contacto</th>        
+                        <th scope="col">Nombre Dueño</th>
+                        <th scope="col">Telefono de Contacto</th>   
                         @endif
                         <th scope="col">TIpo Servicio</th>
                         
@@ -37,12 +38,14 @@
                                 @endif
                                 @if(Auth::user()->id_perfil == 1)
                                     @foreach($usuarios as $usuario)
-                                        @if($usuario->rut == $mascota->rut)
+                                        @if($usuario->rut == $mascota->rut && $usuario->rut == $hora->rut)
                                             <td>{{$usuario->nombre}}</td>
                                             <td>{{$usuario->fono}}</td>
                                         @endif
+                                        
                                     @endforeach
                                 @endif
+                                
                             @endforeach
                             
                             @foreach($servicios as $servicio)
