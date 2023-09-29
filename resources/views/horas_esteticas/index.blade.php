@@ -42,7 +42,6 @@
                                             <td>{{$usuario->nombre}}</td>
                                             <td>{{$usuario->fono}}</td>
                                         @endif
-                                        
                                     @endforeach
                                 @endif
                                 

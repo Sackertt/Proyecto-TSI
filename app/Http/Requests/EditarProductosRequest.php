@@ -24,8 +24,9 @@ class EditarProductosRequest extends FormRequest
         return [
             'nombre'=> 'required|max:20',
             'precio'=> 'required|numeric',
-            'descripcion' => 'required|max:100',
-            'tipo' => 'required|exists:tipos_productos,id_tipo'
+            'descripcion' => 'required|max:200',
+            'tipo' => 'required|exists:tipos_productos,id_tipo',
+            'imagen' => 'image',
         ];
     }
     public function messages():array
@@ -42,9 +43,9 @@ class EditarProductosRequest extends FormRequest
             'descripcion.max' =>'Descripción muy larga.',
             
             'tipo.required' => 'Seleccione un tipo de producto.',
-            'tipo.exists'    => "Tipo no valido."
+            'tipo.exists'    => "Tipo no valido.",
             
-
+            'imagen.image'  => 'El archivo debe ser un formato valido (jpg o png).',
         ];
     }
 }

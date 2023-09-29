@@ -24,7 +24,12 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Inserte Nombre Producto" value="{{old('nombre')}}">
+                                <input type="text" class="form-control" list="datalistOptions" id="nombre" name="nombre" placeholder="Inserte Nombre Producto" value="{{old('nombre')}}">
+                                <datalist id="datalistOptions">
+                                    @foreach($productos as $producto)
+                                    <option value='{{$producto->nombre_producto}}' >
+                                    @endforeach
+                                </datalist>
                                 </div>
                                 <div class="mb-3">
                                 <label for="precio" class="form-label">Precio</label>

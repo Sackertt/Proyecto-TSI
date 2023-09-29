@@ -23,9 +23,9 @@ class ProductosRequest extends FormRequest
     {
         return [
             // campo => restricciones
-            'nombre'=> 'required|max:20|unique:productos,nombre_producto',
+            'nombre'=> 'required|max:40|unique:productos,nombre_producto',
             'precio'=> 'required|numeric',
-            'descripcion' => 'required|max:100',
+            'descripcion' => 'required|max:200',
             'imagen' => 'required|image',
             'tipo' => 'required|exists:tipos_productos,id_tipo'
             

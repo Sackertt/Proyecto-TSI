@@ -15,6 +15,7 @@ return new class extends Migration
             $table->integer('id_mascota')->autoIncrement();
             $table->string('nombre_mascota',20);
             $table->string('tamaño_mascota',10);
+            $table->string('tipo_mascota',15);
             
             $table->string('rut');
             $table->foreign('rut')->references('rut')->on('usuarios');

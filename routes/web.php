@@ -45,7 +45,7 @@ Route::get('/producto',[ProductoController::class,'index'])->name('productos.ind
 //Gestion Productos
 Route::get('/gestion',[GestionProductoController::class,'index'])->name('gestion_productos.index');
 Route::get('/producto/edit/{producto_id}',[GestionProductoController::class,'edit'])->name('gestion_productos.edit');
-Route::put('/producto/edit/{producto_id}',[GestionProductoController::class,'update'])->name('gestion_productos.update');
+Route::post('/producto/edit/{producto_id}',[GestionProductoController::class,'update'])->name('gestion_productos.update');
 Route::get('/producto/create',[GestionProductoController::class,'create'])->name('gestion_productos.create');
 Route::post('/producto/create',[GestionProductoController::class,'store'])->name('gestion_productos.store');
 Route::get('/producto/create',[GestionProductoController::class,'create'])->name('gestion_productos.create');
