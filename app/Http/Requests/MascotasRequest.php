@@ -24,7 +24,8 @@ class MascotasRequest extends FormRequest
     {
         return [
             'nombre' => 'required|max:20',
-            'tamaño' => ['required','max:10',Rule::in(['Pequeño','Mediano','Grande','Muy Grande'])]
+            'tamaño' => ['required','max:10',Rule::in(['Pequeño','Mediano','Grande','Muy Grande'])],
+            'tipo_mascota' => ['required','max:15',Rule::in(['Perro', 'Gato', 'Conejo'])],
         ];
     }
     public function messages():array
@@ -37,6 +38,9 @@ class MascotasRequest extends FormRequest
             'tamaño.required'=>'Seleccione el tamaño de su mascota',
             'tamaño.max'=>'Seleccione un tamaño valido',
             'tamaño.in'=>'Seleccione un tamaño valido',
+            
+            'tipo_mascota.required'=>'Seleccione el tipo de su mascota',
+            'tipo_mascota.in'=>'Tipo de mascota no valido',
         ];
     }
 }

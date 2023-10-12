@@ -13,9 +13,16 @@ use Illuminate\Support\Facades\File;
 
 class GestionProductoController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $productos = DB::table('productos')->get();
-        return view('gestion_productos.index',compact('productos'));
+        $tipos = DB::table('tipos_productos')->get();
+        $tipo = $request->tipo;
+        if($tipos ->contains('id_tipo',$tipo)){
+            $productos = DB::table('productos')->where('tipo_producto',$tipo)->get();
+        }
+
+        return view('gestion_productos.index',compact(['productos','tipos']));
+
     }
     public function edit($producto_id) 
     {

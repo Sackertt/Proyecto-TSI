@@ -8,6 +8,28 @@
                         <h3>Lista de Productos</h3>
                     </div>
                     <div class="card-body tamaño-tabla">
+                        <div class="row">
+                            <div class="col">
+                                <form action="{{route('gestion_productos.index')}}">
+                                    <div class="row mb-3">
+                                        <div class="col-12 col-md-8">
+                                        <select class="form-select" name="tipo" aria-label="Default select example">
+                                        <option value="XD">Seleccione Filtro de Productos</option>
+                                        @foreach($tipos as $tipo)
+                                        <option value="{{$tipo->id_tipo}}">{{$tipo->nombre_tipo}}</option>
+                                        @endforeach
+                                        </select>
+                                        </div>
+                                        <div class="col-6 col-md-2 text-end">
+                                            <button class="btn btn-primary  px-3 " type="submit">Aplicar Filtro</button>
+                                        </div>
+                                        <div class="col-6 col-md-2 text-start">
+                                            <a href="{{route('gestion_productos.index')}}" class="btn btn-danger text-white px-3">Borrar Filtros</a>
+                                        </div>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>
                         <table class="table table-bordered">
                         <thead>
                             <tr>

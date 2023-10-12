@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HorasEsteticasRequest;
 use App\Models\HoraEstetica;
+use App\Models\Usuario;
 use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,24 +39,32 @@ class HorasEsteticasController extends Controller
     }
     public function store(HorasEsteticasRequest $request)
     {
-        // Validaciones
-        $mascotas = DB::table('mascotas')->where('rut',Auth::user()->rut)->get();
-        $mascotar = $request->mascota;
-        foreach($mascotas as $mascota){
-            if($mascota->id_mascota == $mascotar){
+       //Crear hora
+       $hora = new HoraEstetica();
+       $hora->rut = Auth::user()->rut; 
+       $hora->tipo_servicio = $request->servicio;
+       $hora->fecha_servicio = $request->fecha;
+       $hora->hora_servicio = $request->hora;
+       $hora->id_mascota = $request->mascota;
+       $hora->estado = 'En Espera';
+       
+       $hora ->save();
 
-                //Crear hora
-                $hora = new HoraEstetica();
-                $hora->rut = Auth::user()->rut; 
-                $hora->tipo_servicio = $request->servicio;
-                $hora->fecha_servicio = $request->fecha;
-                $hora->id_mascota = $mascotar;
-                
-                $hora ->save();
+       return redirect()->route('horas_esteticas.index');
+    }
+    public function update(Request $request,$id_hora)
+    {
+        $horas = DB::table('horas_esteticas')->get();
+        if($horas->contains('id_hora',$id_hora))
+        {
+            // Usuario
+            DB::table('horas_esteticas')->where('id_hora',$id_hora)->update(['estado'=>'Cancelada']);
+            // Fin Usuario
+            // Admin
 
-                return redirect()->route('horas_esteticas.index');
-            }
+            // Fin Admin
         }
-        return redirect()->route('horas_esteticas.index');
+
+       return redirect()->route('horas_esteticas.index');
     }
 }

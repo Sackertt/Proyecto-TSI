@@ -21,6 +21,7 @@ class MascotaController extends Controller
       $mascota = new Mascota();
       $mascota -> nombre_mascota = $request->nombre;
       $mascota -> tamaño_mascota = $request->tamaño;
+      $mascota -> tipo_mascota = $request->tipo_mascota;
       $mascota -> rut = Auth::user()->rut;
 
       $mascota -> save();

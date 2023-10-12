@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             TiposPerfilesSeeder::class,
             CuentasSeeder::class,
             TiposServiciosSeeder::class,
+            ProductosSeeder::class,
         ]);
     }
 }

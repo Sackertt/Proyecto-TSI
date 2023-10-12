@@ -29,14 +29,19 @@
                             </div>
                             <div class="col">
                                 <div class="mb-3">
-                                <label for="contraseña" class="form-label">Contraseña</label>
-                                <input type="password" name="password" class="form-control" id="contraseña" value="{{old('contraseña')}}">
-                                </div>
-                                <div class="mb-3">
                                 <label for="fono" class="form-label">Telefono</label>
                                 <input type="text" name="fono" class="form-control" id="fono" placeholder="9XXXXXXXX" value="{{old('fono')}}">
                                 </div>
-                                <div class="text-end mx-3 mt-5">
+                                <div class="mb-3">
+                                <label for="contraseña" class="form-label">Contraseña</label>
+                                <input type="password" name="password" class="form-control" id="contraseña" value="">
+                                </div>
+                                <div class="mb-3">
+                                <label for="contraseña2" class="form-label">Confirmar Contraseña</label>
+                                <input type="password" name="password2" class="form-control" id="contraseña2" value="">
+                                </div>
+                               
+                                <div class="text-end mx-3 ">
                                 <button type="submit" class="btn btn-primary px-3">Registrar Usuario</button>
                                 </div>
                                 

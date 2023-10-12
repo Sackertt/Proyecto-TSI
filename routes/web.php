@@ -69,5 +69,5 @@ Route::put('/mascotas/edit/{mascota}',[MascotaController::class,'update'])->name
 Route::get("/horas_esteticas",[HorasEsteticasController::class, 'index'])->name('horas_esteticas.index');
 Route::get("/horas_esteticas/nueva",[HorasEsteticasController::class, 'create'])->name('horas_esteticas.create');
 Route::post("/horas_esteticas/nueva",[HorasEsteticasController::class, 'store'])->name('horas_esteticas.store');
-
+Route::get("/horas_esteticas/{id_hora}",[HorasEsteticasController::class,'update'])->name('horas_esteticas.update');
 

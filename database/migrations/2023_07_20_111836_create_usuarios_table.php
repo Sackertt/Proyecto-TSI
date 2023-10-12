@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('password',200);
             $table->string('nombre',20);
             $table->string('fono',9);
-            $table->string('direccion',30);
+            $table->string('direccion',50);
             $table->integer('id_perfil');
 
             $table->foreign('id_perfil')->references('id_perfil')->on('tipos_perfiles');

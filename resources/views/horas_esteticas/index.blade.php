@@ -2,7 +2,7 @@
 @section('contenidoPrincipal')
 <div class="container-fluid">
 <div class="row justify-content-center align-items-center mt-5">
-    <div class="col-12 col-md-8 mt-2 mb-5">
+    <div class="col-12 mt-2 mb-5">
         <div class="card">
             <div class="card-header bg-primary text-white text-center">
                 <h3>Toma de Horas</h3>
@@ -22,7 +22,7 @@
                         @endif
                         <th scope="col">TIpo Servicio</th>
                         
-                       
+                        <th scope="col">Estado</th>
                         <th scope="col">Opciones</th>
                         </tr>
                     </thead>
@@ -30,7 +30,7 @@
                         @foreach($horas as $index => $hora)
                             <tr>
                             <th scope="row">{{$index+1}}</th>
-                            <td>{{$hora->fecha_servicio}}</td>
+                            <td>{{ \Carbon\Carbon::parse($hora->fecha_servicio)->format('d/m/Y') }}</td>
                             
                             @foreach($mascotas as $mascota)
                                 @if($mascota->id_mascota == $hora->id_mascota)
@@ -54,10 +54,34 @@
                             @endforeach
                             <!-- Vista Administrador -->
                             
+                                <td>{{$hora->estado}}</td>
+                                <td>
 
-                            <td>
-                                <a href="" class="btn btn-danger text-white">Cancelar</a>
-                            </td>
+                                    <!-- a -->
+                                    <button type="button" class="btn btn-danger text-white ms-1 px-3" data-bs-toggle="modal" data-bs-target="#eliminarModal.{{$hora->id_hora}}">
+                                    Eliminar
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="eliminarModal.{{$hora->id_hora}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>¿Desea Cancelar la Hora de Atencion?</h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Cancelar</button>
+                                                    <a href="{{route('horas_esteticas.update',$hora->id_hora)}}" class="btn btn-danger text-white">Aceptar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                <!-- fin a -->
+                            
                             </tr>
                        @endforeach
                     </tbody>

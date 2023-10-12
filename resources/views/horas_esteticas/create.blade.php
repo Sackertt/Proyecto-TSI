@@ -32,10 +32,24 @@
                     </select>
                     </div>
                     <div class="col-6 mt-2">
-                    <label for="fecha">Tipo Servicio</label>
+                    <label for="fecha">Fecha Servicio</label>
                     <input type="date" class="form-control" id="fecha" name="fecha">
                     </div>
-                    <div class="col-6 mt-4 text-end">
+                    <div class="col-6 mt-2">
+                    <label for="hora">Hora Servicio</label>
+                    <select class="form-select" aria-label="Default select example" name="hora" id="hora">
+                        <option value="">Seleccione Hora de Servicio</option>
+                        <option value="08:00">08:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="18:00">18:00</option>
+                        
+                    </select>
+                    </div>
+                    
+                    <div class="col mt-4 text-end">
                     <button class="btn btn-primary mt-2" type="submit">Tomar Hora</button>
                     </div>
                    </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidadorRutRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -23,8 +24,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             // campo => restricciones
-            'rut'=> 'required|max:10|min:9|unique:usuarios,rut',
-            'password'=> 'required|max:200',
+            'rut'=> ['required','max:10','min:9','unique:usuarios,rut','regex:/^(\d{7,8}-[\dkK])$/', new ValidadorRutRule],
+            'password'=> 'required|max:200|same:password2',
             'nombre' => 'required|max:20|min:1',
             'fono' => 'required|max:9|min:9',
             'direccion' => 'required|max:30|min:5'
@@ -39,8 +40,10 @@ class RegisterRequest extends FormRequest
             'rut.max'=>'Escriba un rut con el siguiente Formato XXXXXXXX-X',
             'rut.min'=>'Escriba un rut con el siguiente Formato XXXXXXXX-X',
             'rut.unique'=>'Rut en uso XD',
+            'rut.regex'=> 'Ingrese su rut sin puntos y con guion',
             // ''=>'',
             'password.required'=>'Ingrese una contraseña',
+            'password.same'=>'Ingrese la misma contraseña en ambos campos',
 
             'nombre.required'=>'Indique su nombre',
             'nombre.max'=>'Nombre demasiado extenso',
