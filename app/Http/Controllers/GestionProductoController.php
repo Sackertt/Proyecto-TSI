@@ -9,11 +9,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Gate;
 
 class GestionProductoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request){
+        if(Gate::denies('soy_admin')){
+            return redirect()->route('home.index');
+        }
         $productos = DB::table('productos')->get();
         $tipos = DB::table('tipos_productos')->get();
         $tipo = $request->tipo;
@@ -26,6 +34,9 @@ class GestionProductoController extends Controller
     }
     public function edit($producto_id) 
     {
+        if(Gate::denies('soy_admin')){
+            return redirect()->route('home.index');
+        }
         $productosOg = DB::table('productos')->get();
         if($productosOg ->contains('id_producto', $producto_id)){
             $producto = DB::table('productos')->where('id_producto', $producto_id)->first();
@@ -39,6 +50,9 @@ class GestionProductoController extends Controller
     }
     public function update(EditarProductosRequest $request,$producto)
     {
+        if(Gate::denies('soy_admin')){
+            return redirect()->route('home.index');
+        }
         $productoOg = DB::table('productos')->where('id_producto',$producto)->first();
         if($request->imagen == "")
         {
@@ -86,7 +100,9 @@ class GestionProductoController extends Controller
 
     public function store(ProductosRequest $request)
     {
-        
+        if(Gate::denies('soy_admin')){
+            return redirect()->route('home.index');
+        }
         $producto = new Producto();
         $producto->nombre_producto = $request->nombre;
         $producto->cantidad_producto = 1;
@@ -117,12 +133,18 @@ class GestionProductoController extends Controller
     }
     public function create() 
     {
+        if(Gate::denies('soy_admin')){
+            return redirect()->route('home.index');
+        }
         $tipos = DB::table('tipos_productos')->get();
         $productos = DB::table('productos')->get();
         return view('gestion_productos.create',compact(['tipos','productos']));   
     }
     public function destroy($producto)
     {
+        if(Gate::denies('soy_admin')){
+            return redirect()->route('home.index');
+        }
         $productos = DB::table('productos')->get();
         if ($productos->contains('id_producto',$producto)){
             $productos = DB::table('productos')->where('id_producto', $producto)->first();

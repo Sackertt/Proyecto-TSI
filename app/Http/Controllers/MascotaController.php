@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MascotaController extends Controller
-{
+{ 
+   public function __construct()
+    {
+        $this->middleware('auth');
+    }
    
    public function create()
    {
@@ -21,7 +25,9 @@ class MascotaController extends Controller
       $mascota = new Mascota();
       $mascota -> nombre_mascota = $request->nombre;
       $mascota -> tamaño_mascota = $request->tamaño;
-      $mascota -> tipo_mascota = $request->tipo_mascota;
+      $mascota -> especie_mascota = $request->especie;//Cambiar en el form
+      //$mascota -> raza_mascota = $request->raza; // Cambiar en el formulario
+
       $mascota -> rut = Auth::user()->rut;
 
       $mascota -> save();
@@ -37,5 +43,14 @@ class MascotaController extends Controller
       Db::table('mascotas')->where('id_mascota',$mascota)
       ->update(['tamaño_mascota'=> $request->tamaño]);
       return redirect()->route('home.index');
+   }
+   public function delete($mascota)
+   {
+      // Aqui debemos eliminar la mascota y todo las horas relacionadas a este
+      DB::table('horas_esteticas')->where('id_mascota',$mascota)->delete();
+
+      DB::table('mascotas')->where('id_mascota',$mascota)->delete();
+
+      return back();
    }
 }

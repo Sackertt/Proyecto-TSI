@@ -62,18 +62,63 @@
                                     Eliminar
                                     </button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="eliminarModal.{{$hora->id_hora}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade " id="eliminarModal.{{$hora->id_hora}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
+                                                <form action="{{route('horas_esteticas.update',$hora->id_hora)}}">
                                                 <div class="modal-body">
-                                                    <h4>¿Desea Cancelar la Hora de Atencion?</h4>
+                                                    @if(Gate::allows('soy_usuario'))
+                                                        <h4>¿Desea Cancelar la Hora de Atencion?</h4>
+                                                    @endif
+                                                    @if(Gate::allows('soy_admin'))
+                                                        <h4>Selecciones Estado para la Hora</h4>
+                                                        <div class="row">
+                                                            <div class="col-3"></div>
+                                                            <dic class="col-6">
+                                                            
+                                                            <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="estado" id="flexRadioDefault1" value="Confirmada">
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                Confirmada
+                                                            </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="estado" id="flexRadioDefault1" value="Completado">
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                Completada
+                                                            </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="estado" id="flexRadioDefault1" value="Cancelada">
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                Cancelada
+                                                            </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="estado" id="flexRadioDefault1" value="No Completada">
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                No Completada
+                                                            </label>
+                                                            </div>
+                                                           
+                                                        
+                                                        </div>
+                                                       
+                                                    @endif
                                                 </div>
+                                                
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Cancelar</button>
+                                                    @if(Gate::allows('soy_admin'))
+                                                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                                                    @endif
+                                                    </form>
+                                                    @if(Gate::allows('soy_usuario'))
                                                     <a href="{{route('horas_esteticas.update',$hora->id_hora)}}" class="btn btn-danger text-white">Aceptar</a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -45,13 +45,14 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{route('usuario.index')}}">Mi Cuenta</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    @if(Auth::user()->id_perfil == 1)
+
+                    @if(Gate::allows('soy_admin'))
                     <!-- Admin -->
                     <li><a class="dropdown-item" href="{{route('gestion_productos.index')}}">Gestion Productos</a></li>
                     <li><a class="dropdown-item" href="{{route('horas_esteticas.index')}}">Horas Peluqueria</a></li>
                     @endif
                     
-                    @if(Auth::user()->id_perfil == 2)
+                    @if(Gate::allows('soy_usuario'))
                     <!-- Usuario -->
                     <li><a class="dropdown-item" href="{{route('horas_esteticas.index')}}">Mis Horas Peluqueria</a></li>
                     @endif

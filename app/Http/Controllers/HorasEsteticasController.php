@@ -9,9 +9,14 @@ use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class HorasEsteticasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         
@@ -58,10 +63,19 @@ class HorasEsteticasController extends Controller
         if($horas->contains('id_hora',$id_hora))
         {
             // Usuario
-            DB::table('horas_esteticas')->where('id_hora',$id_hora)->update(['estado'=>'Cancelada']);
+            if(Gate::denies('soy_admin')){
+                DB::table('horas_esteticas')->where('id_hora',$id_hora)->update(['estado'=>'Cancelada']);
+                return redirect()->route('horas_esteticas.index');
+            }
             // Fin Usuario
-            // Admin
 
+            // Admin
+            if(Gate::allows('soy_admin')){
+                // dd($request->estado);
+                DB::table('horas_esteticas')->where('id_hora',$id_hora)->update(['estado'=> $request->estado]);
+
+                return redirect()->route('horas_esteticas.index');
+            }
             // Fin Admin
         }
 
