@@ -34,23 +34,32 @@ class MascotaController extends Controller
       return redirect()->route('home.index');
    }
    public function edit($mascota)
-   {
+   {  
       $mascota = DB::table("mascotas")->where('id_mascota',$mascota)->first();
-      return view('mascotas.edit',compact('mascota'));
+      if($mascota->eliminado == false){
+         return view('mascotas.edit',compact('mascota'));
+      }else{
+         return redirect()->route('home.index');
+      }
    }
    public function update(MascotasEditRequest $request, $mascota)
    {
-      Db::table('mascotas')->where('id_mascota',$mascota)
-      ->update(['tamaño_mascota'=> $request->tamaño]);
+      if($mascota->eliminado == false){
+         Db::table('mascotas')->where('id_mascota',$mascota)
+         ->update(['tamaño_mascota'=> $request->tamaño]);
       return redirect()->route('home.index');
+      }else{
+         return redirect()->route('home.index');
+      }
    }
    public function delete($mascota)
    {
-      // Aqui debemos eliminar la mascota y todo las horas relacionadas a este
-      DB::table('horas_esteticas')->where('id_mascota',$mascota)->delete();
-
-      DB::table('mascotas')->where('id_mascota',$mascota)->delete();
-
-      return back();
+      //verificar que la mascota sea del wn logeao
+      $mascota = DB::table('mascotas')->where('id_mascota',$mascota)->first();
+      $mascotas = DB::table('mascotas')->where('rut',auth::user()->rut)->get();
+      if($mascotas->contains($mascota)){
+         DB::table('mascotas')->where('id_mascota',$mascota->id_mascota)->update(['eliminado'=>true]);
+      }
+      return redirect()->route('usuario.index');
    }
 }

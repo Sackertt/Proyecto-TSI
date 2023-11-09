@@ -16,9 +16,9 @@ class PerroPropioRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $mascotas = DB::table('mascotas')->where('rut',Auth::user()->rut)->where('id_mascota',$value)->get();
+        $mascotas = DB::table('mascotas')->where('rut',Auth::user()->rut)->where('id_mascota',$value)->where('eliminado',false)->get();
         if(count($mascotas)==0){
-            $fail('Ingrese una Mascota Propia');
+            $fail('Ingrese una Mascota Valida');
         }
     }
 }

@@ -50,8 +50,33 @@
                             <td>{{$mascota->nombre_mascota}}</td>
                             <td>{{$mascota->tamaño_mascota}}</td>
                             <td>
+                                <!-- Editar Mascota -->
                                 <a href="{{route('mascotas.edit', $mascota->id_mascota)}}" class="btn btn-success text-white">Editar</a>
-                                <a href="" class="btn btn-danger text-white">Eliminar</a> 
+                                <!-- Fin Editar Mascota -->
+                                <!-- Eliminar Mascota -->
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger text-white" data-bs-toggle="modal" data-bs-target="#exampleModal.{{$index}}">
+                                Eliminar Mascota
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal.{{$index}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea Eliminar a {{$mascota->nombre_mascota}}?</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a href="{{route('mascotas.delete',$mascota->id_mascota)}}" class="btn btn-danger text-white">Eliminar</a> 
+
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <!-- Fin ELiminar Mascota -->
                             </td>
                             </tr>
                        @endforeach

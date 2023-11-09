@@ -26,6 +26,14 @@
                                 <label for="direccion" class="form-label">Direccion</label>
                                 <input type="text" name="direccion" class="form-control" id="direccion" value="{{old('direccion')}}">
                                 </div>
+                                @if(Gate::allows('soy_admin'))
+                                <select class="form-select" name="tipo_perfil" id="">
+                                    <option value="">Seleccione Rol</option>
+                                    @foreach ($perfiles as $perfil)
+                                    <option value="{{$perfil->id_perfil}}">{{$perfil->nombre_perfil}}</option>
+                                    @endforeach
+                                </select>
+                                @endif                
                             </div>
                             <div class="col">
                                 <div class="mb-3">
@@ -51,7 +59,7 @@
                         
                     </form>
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger mt-2">
                             <p>Por favor solucione los siguientes problemas:</p>
                             <ul>
                                 @foreach ($errors->all() as $error)

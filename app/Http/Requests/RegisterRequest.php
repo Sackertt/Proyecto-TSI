@@ -28,7 +28,8 @@ class RegisterRequest extends FormRequest
             'password'=> 'required|max:200|same:password2',
             'nombre' => 'required|max:20|min:1',
             'fono' => 'required|max:9|min:9',
-            'direccion' => 'required|max:30|min:5'
+            'direccion' => 'required|max:30|min:5',
+            'tipo_perfil' => 'exists:tipos_perfiles,id_perfil',
             
         ];
     }
@@ -55,6 +56,8 @@ class RegisterRequest extends FormRequest
             'direccion.required'=>'Ingrese la direccion donde vive actualmente',
             'direccion.max'=>'Ingrese la direccion de manera mas breve',
             'direccion.min'=>'Ingrese la direccion donde vive actualmente',
+
+            'tipo_perfil.exists'=> 'Seleccione un tipo de perfil'
         ];
     }
 }

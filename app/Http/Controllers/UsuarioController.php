@@ -15,7 +15,8 @@ class UsuarioController extends Controller
     public function index()
    {
         $usuario = Auth()->user();
-        $mascotas = DB::table('mascotas')->where('rut', $usuario->rut)->get();
-        return view('usuario.index',compact(['mascotas','usuario']));     
+        $mascotas = DB::table('mascotas')->where('rut', $usuario->rut)->where('eliminado',false)->get();
+        return view('usuario.index',compact(['mascotas','usuario']));
    }
+   
 }

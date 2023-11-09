@@ -37,7 +37,7 @@ class HorasEsteticasController extends Controller
     }
     public function create()
     {
-        $mascotas = DB::table('mascotas')->where('rut' , Auth::user()->rut)->get();
+        $mascotas = DB::table('mascotas')->where('rut' , Auth::user()->rut)->where('eliminado',false)->get();
         $servicios = DB::table('tipos_atenciones')->get();
         
         return view('horas_esteticas.create',compact(['mascotas', 'servicios']));

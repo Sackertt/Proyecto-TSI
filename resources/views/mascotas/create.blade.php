@@ -16,7 +16,7 @@
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="" value="{{old('nombre')}}">
                     </div>
                     <label for="tipo_mascota">Seleccione Tipo de Animal de su mascota</label>
-                    <select class="form-select" id="tipo_mascota" name="tipo_mascota" aria-label="">
+                    <select class="form-select" id="tipo_mascota" name="especie" aria-label="">
                     <option value=""></option>
                     <option value="Perro">Perro</option>
                     <option value="Gato">Gato</option>

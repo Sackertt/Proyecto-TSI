@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('fono',9);
             $table->string('direccion',50);
             $table->integer('id_perfil');
+            $table->boolean('eliminado')->default(false);
 
             $table->foreign('id_perfil')->references('id_perfil')->on('tipos_perfiles');
         });

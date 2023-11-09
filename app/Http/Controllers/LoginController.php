@@ -18,7 +18,7 @@ class LoginController extends Controller
         $password = $request->contraseña;
         
         
-        if(Auth::attempt(['rut'=>$rut,'password'=>$password])){
+        if(Auth::attempt(['rut'=>$rut,'password'=>$password,'eliminado' => false])){
             
             return redirect()->route('home.index');
         }

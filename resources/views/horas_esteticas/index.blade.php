@@ -13,6 +13,7 @@
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
                         <th scope="col">Mascota</th>
                            
                         <!-- Vista Administrador -->
@@ -31,19 +32,22 @@
                             <tr>
                             <th scope="row">{{$index+1}}</th>
                             <td>{{ \Carbon\Carbon::parse($hora->fecha_servicio)->format('d/m/Y') }}</td>
+                            <td>{{$hora->hora_servicio}}</td>
                             
                             @foreach($mascotas as $mascota)
                                 @if($mascota->id_mascota == $hora->id_mascota)
                                     <td>{{$mascota->nombre_mascota}}</td>
-                                @endif
-                                @if(Auth::user()->id_perfil == 1)
+                                    @if(Auth::user()->id_perfil == 1)
                                     @foreach($usuarios as $usuario)
                                         @if($usuario->rut == $mascota->rut && $usuario->rut == $hora->rut)
                                             <td>{{$usuario->nombre}}</td>
                                             <td>{{$usuario->fono}}</td>
+                                            @break
                                         @endif
                                     @endforeach
+                                     @endif
                                 @endif
+                                
                                 
                             @endforeach
                             

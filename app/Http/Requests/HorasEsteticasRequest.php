@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\HoraDisponibleRule;
 use App\Rules\PerroPropioRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -27,7 +28,7 @@ class HorasEsteticasRequest extends FormRequest
             'mascota' => ['required','exists:mascotas,id_mascota',new PerroPropioRule],
             'servicio' => ['required','exists:tipos_atenciones,id_atencion'],
             'fecha' => 'required|after:yesterday',
-            'hora'=> ['required', Rule::in(['08:00','10:00','12:00','14:00','16:00','18:00'])]
+            'hora'=> ['required', Rule::in(['08:00','10:00','12:00','14:00','16:00','18:00']), new HoraDisponibleRule]
         ];
     }
     public function messages():array
@@ -41,7 +42,7 @@ class HorasEsteticasRequest extends FormRequest
             'fecha.required'=>"Seleccione la fecha del servicio",
             'fecha.after' =>"Seleccione una fecha valida",
             'hora.required' => "Seleccione una Hora para el servicio",
-            'hora.in' => "Seleccione un horario valido."
+            'hora.in' => "Seleccione un horario valido.",
         ];
     }
 }

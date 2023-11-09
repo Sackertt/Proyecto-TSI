@@ -10,6 +10,7 @@ use App\Http\Controllers\HorasEsteticasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\MascotaController;
+use App\Http\Controllers\PerfilesController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\UsuarioController;
@@ -38,6 +39,10 @@ Route::post('/register',[RegisterController::class,'store'])->name('register.sto
 
 Route::get('/logout', [LogoutController::class,'logout'])->name('logout.logout');
 
+//Perfiles
+Route::get('/usuarios',[PerfilesController::class, 'index'])->name('perfiles.index');
+Route::get('/usuarios/delete/{usuario}',[PerfilesController::class, 'delete'])->name('perfiles.delete');
+
 //Ver catalogo
 Route::get('/producto',[ProductoController::class,'index'])->name('productos.index');
 
@@ -58,12 +63,12 @@ Route::get('/producto/download/{producto}',[DescargarImagenController::class,'do
 Route::get('/producto/{producto}',[DetalleProductoController::class,'index'])->name('detalles_productos.index');
 
 //Mascotas
-
 Route::get('/mascotas/create',[MascotaController::class,'create'])->name('mascotas.create');
 Route::post('/mascotas/create',[MascotaController::class,'store'])->name('mascotas.store');
 
 Route::get('/mascotas/edit/{mascota}',[MascotaController::class,'edit'])->name('mascotas.edit');
 Route::put('/mascotas/edit/{mascota}',[MascotaController::class,'update'])->name('mascotas.update');
+Route::get('/mascotas/delete/{mascota}',[MascotaController::class,'delete'])->name('mascotas.delete');
 
 //Horas Esteticas
 Route::get("/horas_esteticas",[HorasEsteticasController::class, 'index'])->name('horas_esteticas.index');
