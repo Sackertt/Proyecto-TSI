@@ -50,6 +50,9 @@
                     <!-- Admin -->
                     <li><a class="dropdown-item" href="{{route('gestion_productos.index')}}">Gestion Productos</a></li>
                     <li><a class="dropdown-item" href="{{route('horas_esteticas.index')}}">Horas Peluqueria</a></li>
+                    <li><a class="dropdown-item" href="{{route('perfiles.index')}}">Gestion de Usuarios</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{{route('register.index')}}">Registrar Usuario/Administrador</a></li>
                     @endif
                     
                     @if(Gate::allows('soy_usuario'))

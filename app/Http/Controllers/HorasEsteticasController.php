@@ -51,7 +51,6 @@ class HorasEsteticasController extends Controller
        $hora->fecha_servicio = $request->fecha;
        $hora->hora_servicio = $request->hora;
        $hora->id_mascota = $request->mascota;
-       $hora->estado = 'En Espera';
        
        $hora ->save();
 

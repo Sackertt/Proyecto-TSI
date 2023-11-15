@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             CuentasSeeder::class,
             TiposServiciosSeeder::class,
             ProductosSeeder::class,
+            MascotasSeeder::class,
+            HorasEsteticasSeeder::class,
         ]);
     }
 }
