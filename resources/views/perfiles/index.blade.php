@@ -8,7 +8,7 @@ $perfil = [1 => 'Administrador', 2 => 'Usuario']
     <div class="col mx-4">
         <div class="card text-center">
             <div class="card-header bg-primary text-white">
-                <h2>Messi</h2>
+                <h2>Gestion de Usuarios</h2>
             </div>
             <div class="card-body">
                 <table class="table table-bordered border-secondary">
@@ -50,7 +50,7 @@ $perfil = [1 => 'Administrador', 2 => 'Usuario']
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Cancelar</button>
                                     <a href="{{route('perfiles.delete',$usuario->rut)}}" class="btn btn-danger text-white">Eliminar</a>
                                 </div>
                                 </div>
