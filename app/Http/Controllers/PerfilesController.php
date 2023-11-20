@@ -15,7 +15,7 @@ class PerfilesController extends Controller
     public function index()
     {
         if(Gate::denies('soy_admin')){
-            return redirect()->route('home.index');
+            return view('perfiles.index',compact('usuarios'));
         }
         $usuarios = DB::table('usuarios')->get();
         return view('perfiles.index',compact('usuarios'));
@@ -24,7 +24,7 @@ class PerfilesController extends Controller
     public function update(Request $request, $rut)
     {
         if(Gate::denies('soy_admin')){
-            return redirect()->route('home.index');
+            return redirect('perfiles.index');
         }
         DB::table('usuarios')->where('rut', $rut)->update(['id_perfil'=>$request->perfil]);
         return redirect('perfiles.index');
@@ -32,10 +32,11 @@ class PerfilesController extends Controller
     public function delete($usuario)
    {
         if(Gate::denies('soy_admin')){
-            return redirect()->route('home.index');
+            return redirect()->route('perfiles.index');
         }
         if(Auth::user()->rut != $usuario){
             DB::table('usuarios')->where('rut',$usuario)->update(['eliminado'=>true]);
+            DB::table('horas_esteticas')->where('rut',$usuario)->where('estado','!=','Completado')->update(['estado'=>"Usuario Eliminado"]);
         }
         return redirect()->route('perfiles.index');
    }

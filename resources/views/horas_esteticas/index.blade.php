@@ -56,29 +56,50 @@
                                     <td>{{$servicio->nombre_atencion}}</td>
                                 @endif
                             @endforeach
-                            <!-- Vista Administrador -->
+                            <!-- FIN Vista Administrador -->
                             
                                 <td>{{$hora->estado}}</td>
                                 <td>
-
-                                    <!-- a -->
+                                @if(Gate::allows('soy_usuario'))
+                                <!-- usuario -->
                                     <button type="button" class="btn btn-danger text-white ms-1 px-3" data-bs-toggle="modal" data-bs-target="#eliminarModal.{{$hora->id_hora}}">
-                                    Eliminar
+                                    Cancelar
                                     </button>
                                     <!-- Modal -->
                                     <div class="modal fade " id="eliminarModal.{{$hora->id_hora}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea Cancelar la Hora de Atencion?</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Cancelar</button>
+                                                    <a href="{{route('horas_esteticas.update',$hora->id_hora)}}" class="btn btn-danger text-white">Aceptar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                  
+                                @if(Gate::allows('soy_admin'))   
+                                    <!-- usuario -->
+                                    <button type="button" class="btn btn-danger text-white ms-1 px-3" data-bs-toggle="modal" data-bs-target="#eliminarModal.{{$hora->id_hora}}">
+                                    Cambiar Estado
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade " id="eliminarModal.{{$hora->id_hora}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-primary text-white">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Seleccione el estado para la hora</h1>
+                                                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    
                                                 </div>
                                                 <form action="{{route('horas_esteticas.update',$hora->id_hora)}}">
                                                 <div class="modal-body">
-                                                    @if(Gate::allows('soy_usuario'))
-                                                        <h4>¿Desea Cancelar la Hora de Atencion?</h4>
-                                                    @endif
-                                                    @if(Gate::allows('soy_admin'))
-                                                        <h4>Selecciones Estado para la Hora</h4>
+                                                        
                                                         <div class="row">
                                                             <div class="col-3"></div>
                                                             <dic class="col-6">
@@ -111,26 +132,31 @@
                                                         
                                                         </div>
                                                        
-                                                    @endif
                                                 </div>
                                                 
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Cancelar</button>
-                                                    @if(Gate::allows('soy_admin'))
                                                         <button type="submit" class="btn btn-primary">Confirmar</button>
-                                                    @endif
                                                     </form>
-                                                    @if(Gate::allows('soy_usuario'))
-                                                    <a href="{{route('horas_esteticas.update',$hora->id_hora)}}" class="btn btn-danger text-white">Aceptar</a>
-                                                    @endif
+                                                   
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    @endif
                                 </td>
-                                <!-- fin a -->
-                            
+                                <!-- fin usuario -->
+                                
+                                <!-- administrador -->
+
+
+
+
+
+
+
+
+                                <!-- fin administrador -->
                             </tr>
                        @endforeach
                     </tbody>

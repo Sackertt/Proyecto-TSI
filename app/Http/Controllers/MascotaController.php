@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MascotasEditRequest;
 use App\Http\Requests\MascotasRequest;
 use App\Models\Mascota;
+use Hamcrest\Core\HasToString;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +32,7 @@ class MascotaController extends Controller
       $mascota -> rut = Auth::user()->rut;
 
       $mascota -> save();
-      return redirect()->route('home.index');
+      return redirect()->route('usuario.index');
    }
    public function edit($mascota)
    {  
@@ -39,17 +40,17 @@ class MascotaController extends Controller
       if($mascota->eliminado == false){
          return view('mascotas.edit',compact('mascota'));
       }else{
-         return redirect()->route('home.index');
+         return redirect()->route('usuario.index');
       }
    }
    public function update(MascotasEditRequest $request, $mascota)
    {
+      $mascota = DB::table('mascotas')->where('id_mascota',$mascota)->first();
       if($mascota->eliminado == false){
-         Db::table('mascotas')->where('id_mascota',$mascota)
-         ->update(['tamaño_mascota'=> $request->tamaño]);
-      return redirect()->route('home.index');
+         DB::table('mascotas')->where('id_mascota',$mascota->id_mascota)->update(['tamaño_mascota'=>$request->tamaño]);
+         return redirect()->route('usuario.index');
       }else{
-         return redirect()->route('home.index');
+         return redirect()->route('usuario.index');
       }
    }
    public function delete($mascota)
