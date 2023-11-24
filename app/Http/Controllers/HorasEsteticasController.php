@@ -17,14 +17,22 @@ class HorasEsteticasController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index()
+    public function index(Request $request)
     {
         
         $servicios = DB::table('tipos_atenciones')->get();
         $usuarios = DB::table('usuarios')->get();
         if(Auth::user()->id_perfil == 1)
         {
-            $horas = DB::table('horas_esteticas')->orderBy('fecha_servicio','asc')->get();
+            if($request->fecha != null){
+                $horas = DB::table('horas_esteticas')->where('fecha_servicio',$request->fecha)->orderBy('fecha_servicio','asc')->get();
+            }
+            else{
+                $horas = DB::table('horas_esteticas')->orderBy('fecha_servicio','asc')->get();
+            }
+
+            
+            
             $mascotas = DB::table('mascotas')->get();
         }
         elseif(Auth::user()->id_perfil == 2)

@@ -1,6 +1,6 @@
 @extends('template.master')
 @section('contenidoPrincipal')
-<div class="container-fluid">
+<div class="container-fluid mb-5">
 <div class="row justify-content-center align-items-center mt-5">
     <div class="col-12 mt-2 mb-5">
         <div class="card">
@@ -8,6 +8,19 @@
                 <h3>Toma de Horas</h3>
             </div>
             <div class="card-body text-center ">
+                <form action="{{route('horas_esteticas.index')}}">
+                    <div class="row mb-2">
+                    
+                        <div class="col-6">
+                            <label for="fecha">Fecha Servicio</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha">
+                        </div>    
+                        <div class="col-6">
+                           <button type="submit" class="btn btn-primary mt-4 px-4">Filtrar Horas</button>
+                        </div>    
+                    </div>
+                   
+                </form>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -162,6 +175,11 @@
                     </tbody>
                 </table>
             </div>
+            @if(count($horas) == 0)
+                <div class="card-footer text-center bg-danger text-white ">
+                    <h1>No hay Horas Registradas</h1>
+                </div>
+            @endif
         </div>
     </div>
 </div>
