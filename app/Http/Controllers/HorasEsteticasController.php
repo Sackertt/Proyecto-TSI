@@ -25,10 +25,10 @@ class HorasEsteticasController extends Controller
         if(Auth::user()->id_perfil == 1)
         {
             if($request->fecha != null){
-                $horas = DB::table('horas_esteticas')->where('fecha_servicio',$request->fecha)->orderBy('fecha_servicio','asc')->get();
+                $horas = DB::table('horas_esteticas')->where('fecha_servicio',$request->fecha)->orderBy('estado','asc')->orderBy('fecha_servicio','asc')->orderBy('hora_servicio', 'asc')->get();
             }
             else{
-                $horas = DB::table('horas_esteticas')->orderBy('fecha_servicio','asc')->get();
+                $horas = DB::table('horas_esteticas')->orderBy('estado','asc')->orderBy('fecha_servicio','asc')->orderBy('hora_servicio', 'asc')->get();
             }
 
             
@@ -71,7 +71,7 @@ class HorasEsteticasController extends Controller
         {
             // Usuario
             if(Gate::denies('soy_admin')){
-                DB::table('horas_esteticas')->where('id_hora',$id_hora)->update(['estado'=>'Cancelada']);
+                DB::table('horas_esteticas')->where('id_hora',$id_hora)->update(['estado'=>'Suspendida']);
                 return redirect()->route('horas_esteticas.index');
             }
             // Fin Usuario

@@ -3,11 +3,14 @@
 <div class="container-fluid mb-5">
 <div class="row justify-content-center align-items-center mt-5">
     <div class="col-12 mt-2 mb-5">
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header bg-primary text-white text-center">
                 <h3>Toma de Horas</h3>
             </div>
             <div class="card-body text-center ">
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6">
                 <form action="{{route('horas_esteticas.index')}}">
                     <div class="row mb-2">
                     
@@ -17,10 +20,14 @@
                         </div>    
                         <div class="col-6">
                            <button type="submit" class="btn btn-primary mt-4 px-4">Filtrar Horas</button>
+                           <a href="{{route('horas_esteticas.index')}}" class="btn btn-danger text-white mt-4 px-4 ms-3">Borrar Filtros</a>
                         </div>    
                     </div>
                    
                 </form>
+                </div>
+            </div>    
+                
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -76,14 +83,14 @@
                                 @if(Gate::allows('soy_usuario'))
                                 <!-- usuario -->
                                     <button type="button" class="btn btn-danger text-white ms-1 px-3" data-bs-toggle="modal" data-bs-target="#eliminarModal.{{$hora->id_hora}}">
-                                    Cancelar
+                                    Suspender
                                     </button>
                                     <!-- Modal -->
                                     <div class="modal fade " id="eliminarModal.{{$hora->id_hora}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea Cancelar la Hora de Atencion?</h1>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">¿Desea Suspender la Hora de Atencion?</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -132,7 +139,7 @@
                                                             <div class="form-check">
                                                             <input class="form-check-input" type="radio" name="estado" id="flexRadioDefault1" value="Cancelada">
                                                             <label class="form-check-label" for="flexRadioDefault1">
-                                                                Cancelada
+                                                                Suspendida
                                                             </label>
                                                             </div>
                                                             <div class="form-check">
