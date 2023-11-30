@@ -137,7 +137,7 @@
                                                             </label>
                                                             </div>
                                                             <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="estado" id="flexRadioDefault1" value="Cancelada">
+                                                            <input class="form-check-input" type="radio" name="estado" id="flexRadioDefault1" value="Suspendida">
                                                             <label class="form-check-label" for="flexRadioDefault1">
                                                                 Suspendida
                                                             </label>
